@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card UI/UX Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .title{
+            height: 10vh;
+            text-align: center;
+            /* border: 1px solid black; */
+            /* margin: 1% 0 1% 0; */
+            line-height: 1.5;
+            font-size: 3rem;
+        }
+        .con{
+            height: 90vh;
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            height: 80%;
+            width: 70%;
+            /* border: 1px solid black; */
+            border-radius: 0 44px 44px 0;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 10px 10px 10px gray;
+        }
+        .left{
+            height: 100%;
+            width: 2%;
+            background: navy;
+            border-radius: 99px;
+        }
+        .center{
+            height: 100%;
+            width: 63%;
+            /* border: 1px solid black; */
+            background-color: whitesmoke;
+            color: navy;
+            display: flex;
+            align-items: center;
+            padding: clamp(16px, 2vw, 40px);
+        }
+        .right{
+            height: 100%;
+            width: 35%;
+            /* border: 1px solid black; */
+            /* background: black; */
+            background: whitesmoke;
+        }
+        .center h1{
+            font-size: clamp(2rem, 7.8vw, 8rem);
+            line-height: 1.1;
+        }
+        .top{
+            height: 30%;
+            background: navy;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+        }
+        .circle{
+            width: clamp(90px, 9vw, 120px);
+            min-height: 80px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            transform: translate(-50%, 50%);
+            border: 5px solid navy;
+            position: absolute;
+            left: 50%;
+            bottom: 5%;
+        }
+        img{
+            display: block;
+            height: 100%;
+            width: 100%;
+            border: 5px solid white;
+            border-radius: 50%;
+        }
+        .bottom{
+            height: 70%;
+            background: #fff;
+            padding: calc(clamp(90px, 9vw, 120px) / 2 + 0.8rem) 1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .bottom h2{
+            font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+        }
+        .bottom h3{
+            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+            font-weight: 600;
+        }
+        .bottom h4{
+            font-size: clamp(0.85rem, 1.2vw, 1rem);
+            font-weight: 500;
+        }
+        .icon{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 0.6rem 0;
+        }
+        .icon a{
+            font-size: 1.6rem;
+            line-height: 1;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .icon a:hover{
+            transform: translateY(-3px) scale(1.1);
+        }
+        .fa-facebook{
+            color: blue;
+        }
+        .fa-instagram{
+            color: transparent;
+            background: linear-gradient(red, orange);
+            background-clip: text;
+        }
+        .fa-github{
+            color: violet;
+        }
+        .fa-linkedin{
+            color: blue;
+        }
+        .fa-behance{
+            color: green;
+        }
+        .btn{
+            width: 90%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6%;
+        }
+        button{
+            padding: 10px;
+            border: none;
+            border-radius: 99px;
+            background: navy;
+            color: azure;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover{
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+        .last{
+            width: 100%;
+            /* margin-top: auto; */
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .last span{
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        /* @media (max-width:1080px) {
+            .bottom h2{
+            font-size: 1.5rem;
+        }
+        .bottom h3{
+            font-size: 1rem;
+        }
+        .bottom h4{
+            font-size: .8rem;
+        }
+        .center h1{
+            font-size: 9.2vw;
+        }
+        .circle{
+            height: 17%;
+            width: 10%;
+        }
+        }
+        @media (max-width:860px) {
+            .bottom h2{
+            font-size: 1.2rem;
+        }
+        .bottom h3{
+            font-size: .8rem;
+        }
+        .bottom h4{
+            font-size: .7rem;
+        }
+        .center h1{
+            font-size: 5rem;
+        }
+            
+        } */
+        @media (max-width:600px){
+            .box{
+                width: 90%;
+                flex-direction: column-reverse;
+                border-radius: 44px;
+            }
+            .left{
+                height: 3%;
+                width: 100%;
+            }
+            .center{
+                height: 15%;
+                width: 100%;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+            }
+            .center h1{
+                font-size: clamp(1rem,6vw,10rem);
+            }
+            .right{
+                height: 82%;
+                width: 100%;
+            }
+
+        }
+        /* @media (max-width:1020px) {
+            .box{
+                height: 65%;
+                width: 70%;
+            }
+            .bottom h2{
+                padding-top: 50px;
+            }
+            .btn{
+                height: 8%;
+                width: 70%;
+            }
+            .icons{
+                margin: 0;
+            }
+            .circle{
+                height: 14%;
+                width: 8%;
+                top: 34%;
+                right: 23.5%;
+            }  
+        }
+        @media (max-width:860px) {
+            .box{
+                height: 55%;
+                width: 60%;
+            }
+            .bottom h2{
+                padding-top: 30px;
+            }
+            .btn{
+                height: 6%;
+                width: 60%;
+            }
+            .circle{
+                height: 13%;
+                width: 8%;
+                top: 36%;
+                right: 26%;
+            }  
+            
+        }
+        @media (max-width:420px) {
+            .circle{
+                height: 10%;
+                width: 10%;
+                top: 36%;
+                right: 26%;
+            } 
+        } */
+    </style>
+</head>
+<body>
+    <h1 class="title">UI/UX</h1>
+    <div class="con">
+        <div class="box">
+            <div class="left"></div>
+            <div class="center"><h1>Profile Card UI UX Design</h1></div>
+            <div class="right">
+                <div class="top">
+                    <div class="circle">
+                        <img src="img.png" alt="pfp">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <h2>Website Developer</h2>
+                    <h3>Dezyne Ecole College</h3>
+                    <h4>BCA 1<sup>st</sup> Year</h4>
+                    <div class="icon">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                    <div class="btn">
+                        <button>Subscribe</button>
+                        <button>Message</button>
+                    </div>
+                    <div class="last">
+                        <span><i class="fa-solid fa-heart"></i>60.4K</span>
+                        <span><i class="fa-solid fa-comment"></i>20K</span>
+                        <span><i class="fa-solid fa-share fa-flip-horizontal"></i>12.6K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
